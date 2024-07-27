@@ -8,9 +8,10 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const User = require("./models/users");
 const Product = require("./models/Product");
-
+const dotenv = require("dotenv")
+dotenv.config()
 const app = express();
-const PORT = 4000;
+const PORT = process.env.Port || 4000;
 
 main();
 app.use(express.json());

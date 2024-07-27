@@ -1,9 +1,12 @@
 const mongoose = require("mongoose");
-const uri = "mongodb+srv://rohitrandy002:qq3OGPBD2UhICNAt@cluster0.ij3af6j.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
+const dotenv = require("dotenv")
+dotenv.config()
+const Mongo = process.env.MONGODB
+
 
 
 function main() {
-    mongoose.connect(uri).then(() => {
+    mongoose.connect(Mongo).then(() => {
         console.log("MongoDB connected Succesfully")
     
     }).catch((err) => {
