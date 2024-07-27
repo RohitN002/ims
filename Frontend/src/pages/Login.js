@@ -20,7 +20,7 @@ function Login() {
 
   const authCheck = () => {
     setTimeout(() => {
-      fetch("http://localhost:4000/api/login")
+      fetch("https://webnox-ims0backend.onrender.com/api/login")
         .then((response) => response.json())
         .then((data) => {
          
@@ -44,7 +44,7 @@ function Login() {
     
       enqueueSnackbar('To login user, enter details to proceed..."', { variant: 'error' });
     } else {
-      fetch("http://localhost:4000/api/login", {
+      fetch("https://webnox-ims0backend.onrender.com/api/login", {
         method: "POST",
         headers: {
           "Content-type": "application/json",

@@ -14,8 +14,7 @@ function Store() {
 
   // Fetching all stores data
   const fetchData = () => {
-    fetch(`http://localhost:4000/api/store/get/66a4800699f4c6f7f8a16d3d`)
-    // fetch(`http://localhost:4000/api/store/get/${authContext.user}`)
+  fetch(`https://webnox-ims0backend.onrender.com/api/store/get/${authContext.user}`)
       .then((response) => response.json())
       .then((data) => {
         setAllStores(data);

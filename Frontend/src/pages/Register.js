@@ -22,7 +22,7 @@ function Register() {
 
   // Register User
   const registerUser = () => {
-    fetch("http://localhost:4000/api/register", {
+    fetch("https://webnox-ims0backend.onrender.com/api/register", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

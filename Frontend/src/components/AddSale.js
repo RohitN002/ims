@@ -30,7 +30,7 @@ export default function AddSale({
 
   // POST Data
   const addSale = () => {
-    fetch("http://localhost:4000/api/sales/add", {
+    fetch("https://webnox-ims0backend.onrender.com/api/sales/add", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

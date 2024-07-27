@@ -25,7 +25,7 @@ export default function AddStore() {
 
   const addProduct = () => {
     console.log(authContext.user)
-    fetch("http://localhost:4000/api/store/add", {
+    fetch("https://webnox-ims0backend.onrender.com/api/store/add", {
       method: "POST",
       headers: {
         "Content-type": "application/json",

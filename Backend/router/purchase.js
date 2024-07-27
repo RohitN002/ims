@@ -12,5 +12,5 @@ app.get("/get/:userID/totalpurchaseamount", purchase.getTotalPurchaseAmount);
 
 module.exports = app;
 
-// http://localhost:4000/api/purchase/add POST
-// http://localhost:4000/api/purchase/get GET
+// https://webnox-ims0backend.onrender.com/api/purchase/add POST
+// https://webnox-ims0backend.onrender.com/api/purchase/get GET

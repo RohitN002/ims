@@ -16,5 +16,5 @@ module.exports = app;
 
 
 
-// http://localhost:4000/api/sales/add POST
-// http://localhost:4000/api/sales/get GET
+// https://webnox-ims0backend.onrender.com/api/sales/add POST
+// https://webnox-ims0backend.onrender.com/api/sales/get GET
