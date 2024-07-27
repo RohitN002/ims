@@ -25,7 +25,8 @@ function Login() {
         .then((data) => {
          
           enqueueSnackbar('Successfully Login', { variant: 'success' });
-          localStorage.setItem("user", JSON.stringify(data));
+          localStorage.setItem("user", JSON.stringify(data.user));
+          localStorage.setItem("token", data.token);
           authContext.signin(data._id, () => {
             navigate("/");
           });

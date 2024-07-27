@@ -8,26 +8,28 @@ const cors = require("cors");
 const bcrypt = require("bcrypt");
 const User = require("./models/users");
 const Product = require("./models/Product");
+const authMiddleware = require('./utils/authMiddleware')
 const dotenv = require("dotenv")
 dotenv.config()
 const app = express();
 const PORT = process.env.Port || 4000;
+const { generateToken, verifyToken } = require("./utils/jwt"); 
 
 main();
 app.use(express.json());
 app.use(cors());
 
 // Store API
-app.use("/api/store", storeRoute);
+app.use("/api/store", authMiddleware,storeRoute);
 
 // Products API
-app.use("/api/product", productRoute);
+app.use("/api/product",authMiddleware, productRoute);
 
 // Purchase API
-app.use("/api/purchase", purchaseRoute);
+app.use("/api/purchase",authMiddleware, purchaseRoute);
 
 // Sales API
-app.use("/api/sales", salesRoute);
+app.use("/api/sales",authMiddleware, salesRoute);
 
 // Signin
 let userAuthCheck;
@@ -37,7 +39,8 @@ app.post("/api/login", async (req, res) => {
     const user = await User.findOne({ email: req.body.email });
     if (user && await bcrypt.compare(req.body.password, user.password)) {
       userAuthCheck = user;
-      res.status(200).json(user);
+      const token = generateToken(user);
+      res.status(200).json({user,token});
     } else {
       userAuthCheck = null;
       res.status(401).json({ message: "Invalid Credentials" });
@@ -49,7 +52,7 @@ app.post("/api/login", async (req, res) => {
 });
 
 // Getting User Details of logged-in user
-app.get("/api/login", (req, res) => {
+app.get("/api/login",authMiddleware, (req, res) => {
   if (userAuthCheck) {
     res.status(200).json(userAuthCheck);
   } else {
